@@ -7,14 +7,17 @@
 [ci]:      https://travis-ci.org/rtsao/postcss-match
 
 ```css
-.foo {
-    /* Input example */
+.blah {
+  @match bar {
+    foo => { color: red; },
+    bar => { background: green; }
+  }
 }
 ```
 
 ```css
-.foo {
-  /* Output example */
+.blah {
+  background: green
 }
 ```
 
