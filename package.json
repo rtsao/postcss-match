@@ -1,0 +1,35 @@
+{
+  "name": "postcss-match",
+  "version": "0.0.0",
+  "description": "PostCSS plugin for Rust-style pattern matching",
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "rust",
+    "match",
+    "pattern"
+  ],
+  "author": "Ryan Tsao <ryan.j.tsao@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rtsao/postcss-match.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rtsao/postcss-match/issues"
+  },
+  "homepage": "https://github.com/rtsao/postcss-match",
+  "dependencies": {
+    "postcss": "^4.1.13"
+  },
+  "devDependencies": {
+    "chai": "^3.0.0",
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^0.14.0",
+    "gulp-mocha": "^2.1.2"
+  },
+  "scripts": {
+    "test": "gulp"
+  }
+}
