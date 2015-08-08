@@ -28,3 +28,11 @@ postcss([ require('postcss-match') ])
 ```
 
 See [PostCSS] docs for examples for your environment.
+
+## Differences from Rust and other known limitations
+
+* Braces around arm expressions are non-optional
+* Nested `@match` at-rules are currently unsupported
+* Rust-style range patterns are currently unsupported
+* Pattern exhaustiveness is not checked
+* Pattern unreachability is not checked
