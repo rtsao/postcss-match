@@ -5,12 +5,13 @@
 [PostCSS]: https://github.com/postcss/postcss
 [ci-img]:  https://travis-ci.org/rtsao/postcss-match.svg
 [ci]:      https://travis-ci.org/rtsao/postcss-match
+[postcss-simple-vars]: https://github.com/postcss/postcss-simple-vars
 
 ```css
 .blah {
-  @match bar {
+  @match baz {
     foo => { color: red; },
-    bar => { background: green; }
+    bar | baz => { background: green; }
   }
 }
 ```
@@ -18,6 +19,30 @@
 ```css
 .blah {
   background: green
+}
+```
+
+In conjunction with [postcss-simple-vars]:
+
+```css
+$animal: bear;
+
+.zoo {
+  @match $animal {
+    snake => { color: green; },
+    buffalo | bear => { background: brown; },
+    lion => { font-weight: bold; },
+    _ => {
+      font-style: italic;
+      color: gray;
+    }
+  }
+}
+```
+
+```css
+.zoo {
+  background: brown
 }
 ```
 
