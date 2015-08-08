@@ -1,31 +1,31 @@
 var postcss = require('postcss');
 
-function getPattern(str) {
-    return str.replace(/=>|,|\s/g, '');
+var ANY = '_';
+
+function getPatterns(str) {
+    return str.replace(/=>|,|\s/g, '').split('|');
 }
 
-module.exports = postcss.plugin('postcss-match', function (opts) {
+module.exports = postcss.plugin('postcss-match', function plugin(opts) {
     opts = opts || {};
 
     // TODO: Customizable "any" pattern (e.g. change `_` to `default`)
     // TODO: Customizable delimiter (e.g. change `=>` to `:`)
 
-    return function (css) {
+    return function process(css) {
         css.eachAtRule('match', function processMatch(rule) {
             var value = rule.params;
-            var found;
-
-            rule.each(function checkArm(child) {
-                var pattern = getPattern(child.selector);
-                if (pattern === value) {
-                    found = child.nodes;
-                }
+            var found = rule.some(function checkArm(child) {
+                var patterns = getPatterns(child.selector);
+                return patterns.some(function checkPattern(pattern) {
+                    if (pattern === value || pattern === ANY) {
+                        rule.replaceWith(child.nodes);
+                        return true;
+                    }
+                });
             });
 
-            if (found) {
-                rule.replaceWith(found);
-            } else {
-                // TODO: Handle any case
+            if (!found) {
                 rule.removeSelf();
             }
         });
