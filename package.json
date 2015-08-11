@@ -1,6 +1,6 @@
 {
   "name": "postcss-match",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "PostCSS plugin for Rust-style pattern matching",
   "keywords": [
     "postcss",
