@@ -1,6 +1,0 @@
-.blah {
-  @match bar {
-    foo => { color: red; },
-    bar => { background: green; }
-  }
-}

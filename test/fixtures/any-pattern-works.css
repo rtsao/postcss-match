@@ -1,0 +1,7 @@
+.blah {
+  @match xyz {
+    foo => { color: red; },
+    bar => { background: green; },
+    _ => { font-weight: bold; }
+  }
+}
