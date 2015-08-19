@@ -22,13 +22,10 @@ function getTestName(filename) {
     return filename.replace(/(-|\.css$)/g, ' ');
 }
 
-function processCss(source, resultHandler) {
-    postcss([ plugin() ]).process(source).then(function (result) {
-        resultHandler(result);
-        done();
-    }).catch(function (error) {
-        done(error);
-    });
+function processCss(source, resultHandler, errorHandler) {
+    postcss(plugin()).process(source)
+        .then(resultHandler)
+        .catch(errorHandler);
 }
 
 function runTest(filename) {
@@ -41,6 +38,8 @@ function runTest(filename) {
             t.equal(result.warnings().length, 0, 'no warnings');
             t.end();
         });
+    }, function handleError(error) {
+        console.error(error);
     });
 }
 
